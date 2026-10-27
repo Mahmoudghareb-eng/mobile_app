@@ -1,0 +1,584 @@
+
+/* ========================================
+   1. Global Styles
+======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #3d5df5;
+    --primary-hover: #304de0;
+    --navy: #24344f;
+    --text: #273750;
+    --muted: #7b8ba5;
+    --border: #e5ebf3;
+    --background: #f5f8fc;
+    --white: #ffffff;
+    --green: #0b956c;
+    --red: #f04452;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 18px;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* ========================================
+   2. Main Container
+======================================== */
+.app-container {
+    width: 100%;
+    max-width: 1000px;
+    min-height: calc(100vh - 36px);
+    margin: 0 auto;
+    overflow: hidden;
+    background: var(--white);
+    border: 1px solid #d8e1ed;
+    border-radius: 9px;
+    box-shadow: 0 4px 18px rgba(36, 52, 79, 0.06);
+}
+
+/* ========================================
+   3. Shared Navbar
+======================================== */
+.navbar {
+    min-height: 52px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    background: linear-gradient(110deg, #26364f, #1f2e47);
+    color: var(--white);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.logo-icon {
+    width: 26px;
+    height: 26px;
+    display: grid;
+    place-items: center;
+    border-radius: 6px;
+    background: #3c91ff;
+    color: white;
+    font-size: 19px;
+}
+
+.navbar nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    font-size: 13px;
+}
+
+.home-link {
+    font-size: 22px;
+}
+
+.nav-link {
+    padding: 8px 0;
+    border-bottom: 2px solid #9abaff;
+}
+
+/* ========================================
+   4. Shared Headings
+======================================== */
+h1 {
+    color: var(--text);
+    font-size: 24px;
+    line-height: 1.4;
+}
+
+.page-heading p,
+.form-heading p {
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* ========================================
+   5. Shared Buttons
+======================================== */
+.primary-button,
+.secondary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 40px;
+    padding: 11px 16px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.primary-button {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+}
+
+.primary-button:hover {
+    background: var(--primary-hover);
+    border-color: var(--primary-hover);
+}
+
+.secondary-button {
+    background: var(--white);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+.secondary-button:hover {
+    background: #f3f6fb;
+    border-color: #cbd6e5;
+}
+
+/* ========================================
+   6. Tasks Page
+======================================== */
+.tasks-page {
+    padding: 25px 23px;
+}
+
+.page-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 23px;
+}
+
+/* Filters and Search */
+.toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+.filters {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.filter {
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: #f0f4f9;
+    color: #52637e;
+    font-size: 12px;
+}
+
+.filter.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+}
+
+.search-input {
+    width: 220px;
+    min-width: 0;
+    min-height: 39px;
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    outline: none;
+    font-size: 12px;
+}
+
+/* Task List */
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.task-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    padding: 15px 12px;
+    border: 1px solid #e8edf4;
+    border-radius: 7px;
+    background: var(--white);
+    box-shadow: 0 2px 5px rgba(36, 52, 79, 0.025);
+}
+
+.task-card > input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    accent-color: #3982ff;
+    cursor: pointer;
+}
+
+.task-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.task-content h3 {
+    margin-bottom: 3px;
+    font-size: 13px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.task-content p {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.task-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 9px;
+    border-radius: 20px;
+    font-size: 10px;
+}
+
+.active-status {
+    background: #e8efff;
+    color: #3159d9;
+}
+
+.completed-status {
+    background: #d9f8eb;
+    color: var(--green);
+}
+
+.task-card.completed .task-content h3 {
+    color: #8a9ab2;
+    text-decoration: line-through;
+}
+
+/* Task Action Buttons */
+.task-actions {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex-shrink: 0;
+}
+
+.edit-button,
+.delete-button {
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    border: none;
+    border-radius: 6px;
+    font-size: 17px;
+}
+
+.edit-button {
+    background: #edf3fb;
+    color: #385c91;
+}
+
+.delete-button {
+    background: #fff0f1;
+    color: var(--red);
+}
+
+.edit-button:hover {
+    background: #dce9fc;
+}
+
+.delete-button:hover {
+    background: #ffdbdf;
+}
+
+/* ========================================
+   7. Add / Edit Task Page
+======================================== */
+.edit-page {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 30px;
+    background: var(--white);
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 24px;
+    color: #526783;
+    font-size: 13px;
+}
+
+.back-link:hover {
+    color: var(--primary);
+}
+
+.form-heading {
+    margin-bottom: 28px;
+}
+
+.form-heading h1 {
+    margin-bottom: 5px;
+    font-size: 25px;
+}
+
+/* Form Layout */
+.task-form {
+    display: flex;
+    flex-direction: column;
+    gap: 21px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.form-group label {
+    color: #364761;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Form Fields */
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    min-height: 43px;
+    padding: 11px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    outline: none;
+    background: var(--white);
+    color: var(--text);
+    font-size: 13px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus,
+.search-input:focus {
+    border-color: #91a5ff;
+    box-shadow: 0 0 0 3px rgba(61, 93, 245, 0.08);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #a0aec0;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+.form-group select {
+    cursor: pointer;
+}
+
+/* Form Actions */
+.form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 3px;
+}
+
+/* ========================================
+   8. Tablet and Mobile
+======================================== */
+@media (max-width: 650px) {
+    body {
+        padding: 0;
+        background: var(--white);
+    }
+
+    .app-container {
+        min-height: 100vh;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .navbar {
+        padding: 12px 16px;
+    }
+
+    .tasks-page {
+        padding: 24px 16px;
+    }
+
+    .edit-page {
+        padding: 24px 18px;
+    }
+
+    .page-heading {
+        align-items: flex-start;
+    }
+
+    .toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .filters {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .filter {
+        padding: 10px 5px;
+    }
+
+    .search-input {
+        width: 100%;
+    }
+
+    .task-card {
+        gap: 9px;
+        padding: 14px 10px;
+    }
+
+    .task-actions {
+        gap: 5px;
+    }
+
+    .edit-button,
+    .delete-button {
+        width: 29px;
+        height: 29px;
+    }
+
+    .form-heading h1 {
+        font-size: 23px;
+    }
+
+    .task-form {
+        gap: 20px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        font-size: 16px;
+    }
+
+    .form-actions {
+        margin-top: 8px;
+    }
+
+    .primary-button,
+    .secondary-button {
+        min-height: 44px;
+    }
+}
+
+/* ========================================
+   9. Small Phones
+======================================== */
+@media (max-width: 380px) {
+    .navbar nav {
+        gap: 13px;
+    }
+
+    .logo {
+        font-size: 13px;
+    }
+
+    .tasks-page {
+        padding: 20px 12px;
+    }
+
+    .edit-page {
+        padding: 20px 12px;
+    }
+
+    .page-heading {
+        flex-wrap: wrap;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .primary-button,
+    .secondary-button {
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+
+    .task-card {
+        gap: 7px;
+    }
+
+    .task-content h3 {
+        font-size: 12px;
+    }
+
+    .task-content p {
+        font-size: 10px;
+    }
+
+    .form-actions {
+        gap: 8px;
+    }
+}

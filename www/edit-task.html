@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit/Add Task</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <section class="edit-page" id="edit-task">
+
+            <a href="index.html" class="back-link">← Back to Tasks</a>
+
+            <div class="form-heading">
+                <h1>Edit/Add Task</h1>
+                <p>Update/Add your task details</p>
+            </div>
+
+            <form class="task-form">
+
+                <div class="form-group">
+                    <label for="title">Title *</label>
+                    <input
+                        type="text"
+                        id="title"
+                        placeholder="Enter task title"
+                        value="Study Node.js"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea
+                        id="description"
+                        rows="4"
+                        placeholder="Enter task description"
+                    >Read the documentation and practice the examples.</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="due-date">Due Date</label>
+                    <input
+                        type="date"
+                        id="due-date"
+                        value="2025-04-22"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select id="status">
+                        <option value="active">Active</option>
+                        <option value="completed" selected>Completed</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <a href="index.html" class="secondary-button">Cancel</a>
+                    <button type="button" class="primary-button" id="save-button">
+                        Save Changes
+                    </button>
+                </div>
+
+            </form>
+        </section>
+<script src="edit-task.js"></script>
+</body>
+</html>

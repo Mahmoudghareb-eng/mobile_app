@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+
+        <!-- Header -->
+        <header class="navbar">
+            <a href="#tasks" class="logo">
+                <span class="logo-icon">✓</span>
+                <span>To-Do List</span>
+            </a>
+
+            <nav>
+                <a href="#tasks" class="home-link">⌂</a>
+                <a href="#tasks" class="nav-link">Tasks</a>
+            </nav>
+        </header>
+
+        <!-- Page 1: Tasks -->
+        <section class="tasks-page" id="tasks">
+
+            <div class="page-heading">
+                <div>
+                    <h1>My Tasks</h1>
+                    <p>Stay organized and get things done!</p>
+                </div>
+
+                <a href="edit-task.html" class="primary-button">
+                    + Add Task
+                </a>
+            </div>
+
+            <!-- Filters and Search -->
+            <div class="toolbar">
+                <div class="filters">
+                    <button class="filter active" data-filter="all">All</button>
+                    <button class="filter" data-filter="active">Active</button>
+                    <button class="filter" data-filter="completed">Completed</button>
+                </div>
+
+                <input
+                    type="search"
+                    id="search-input"
+                    class="search-input"
+                    placeholder="⌕  Search tasks..."
+                    aria-label="Search tasks"
+                >
+            </div>
+
+            <!-- Task List -->
+            <div class="task-list" id="task-list"></div>
+        </section>
+    </div>
+<script src="script.js"></script>
+</body>
+</html>
